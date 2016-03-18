@@ -1,18 +1,27 @@
 ext {
     // library versions
+    springBootVersion       ='1.3.3.RELEASE'
+    lombokVersion           ='1.16.8'
 
-    junitVersion = '4.12'
-    festAssertionsVersion = '1.4'
-    guavaVersion = '17.0'
-    
-    groovyVersion = '2.4.3'        
-    jodaTimeVersion = '2.2'    
+    restAssuredVersion      = '2.5.0'
+    junitVersion            = '4.12'
+    festAssertionsVersion   = '1.4'
+
+    guavaVersion            = '17.0'
+    slf4jVersion            ='1.7.13'
+    logbackVersion          ='1.1.3'
+    groovyVersion           = '2.4.3'
+    jodaTimeVersion         = '2.2'
     
     springfoxSwagger2Version = "2.0.3"
     springfoxSwaggerUiVersion = "2.0.3"
-    
+
     // libraries
-    libraries = [            
+    libraries = [
+            lombok               : dependencies.create("org.projectlombok:lombok:${lombokVersion}"),
+
+            hzCast               : dependencies.create("com.hazelcast:hazelcast"),
+
             guava                : dependencies.create("com.google.guava:guava:${guavaVersion}"),
             
             groovy               : dependencies.create("org.codehaus.groovy:groovy-all:${groovyVersion}"),                    
@@ -20,8 +29,16 @@ ext {
             jodaTime             : dependencies.create("joda-time:joda-time:${jodaTimeVersion}"),
             springfoxSwagger2    : dependencies.create("io.springfox:springfox-swagger2:${springfoxSwagger2Version}"),
             springfoxSwaggerUi   : dependencies.create("io.springfox:springfox-swagger-ui:${springfoxSwaggerUiVersion}"),
-            
+
+            slf4jApi             : dependencies.create("org.slf4j:slf4j-api:${slf4jVersion}"),
+            logbackClassic       : dependencies.create("ch.qos.logback:logback-classic:1.1.3"),
+            logbackCore          : dependencies.create("ch.qos.logback:logback-core:1.1.3"),
+
+            spBootStartrTest     : dependencies.create("org.springframework.boot:spring-boot-starter-test"),
+            spBootStartrActuator : dependencies.create("org.springframework.boot:spring-boot-starter-actuator"),
+            spBootStarterParent  : dependencies.create("org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"),
             junit                : dependencies.create("junit:junit:${junitVersion}"),
+            restAssured          : dependencies.create("com.jayway.restassured:rest-assured:${restAssuredVersion}"),
             festAssertions       : dependencies.create("org.easytesting:fest-assert:${festAssertionsVersion}")
             
     ]

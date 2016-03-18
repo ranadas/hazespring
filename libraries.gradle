@@ -1,0 +1,40 @@
+ext {
+    // library versions
+
+    junitVersion = '4.12'
+    festAssertionsVersion = '1.4'
+    guavaVersion = '17.0'
+    
+    groovyVersion = '2.4.3'        
+    jodaTimeVersion = '2.2'    
+    
+    springfoxSwagger2Version = "2.0.3"
+    springfoxSwaggerUiVersion = "2.0.3"
+    
+    // libraries
+    libraries = [            
+            guava                : dependencies.create("com.google.guava:guava:${guavaVersion}"),
+            
+            groovy               : dependencies.create("org.codehaus.groovy:groovy-all:${groovyVersion}"),                    
+
+            jodaTime             : dependencies.create("joda-time:joda-time:${jodaTimeVersion}"),
+            springfoxSwagger2    : dependencies.create("io.springfox:springfox-swagger2:${springfoxSwagger2Version}"),
+            springfoxSwaggerUi   : dependencies.create("io.springfox:springfox-swagger-ui:${springfoxSwaggerUiVersion}"),
+            
+            junit                : dependencies.create("junit:junit:${junitVersion}"),
+            festAssertions       : dependencies.create("org.easytesting:fest-assert:${festAssertionsVersion}")
+            
+    ]
+}
+
+
+    //compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
+    //compile("org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion")
+    //compile("org.apache.commons:commons-lang3:3.2.1")
+    //compile("com.google.guava:guava:16.0.1")
+    //compile("org.yaml:snakeyaml:1.13")
+    //compile("mysql:mysql-connector-java:5.1.28")
+     
+    //testCompile("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
+    //testCompile("org.hsqldb:hsqldb:2.3.1")
+    //testCompile("junit:junit:4.12")

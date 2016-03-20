@@ -58,7 +58,7 @@ public class SimpleDozerSpringTest {
         messageResource.setText("Hello World");
 
 
-        ChatMessage chatMessage = new ChatMessage();
+        ChatMessage chatMessage = new ChatMessage("", "", "", "");
         mapper.map(messageResource, chatMessage, "chat");
     }
 }

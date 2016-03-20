@@ -22,4 +22,27 @@ public class HazelcastConfiguration {
     public Config config() {
         return new Config();
     }
+
+    /*
+    private static final int RECEICED_MESSAGES_TRACK_TTL_SECS = 60 * 60;
+
+    // When Spring Boot find a com.hazelcast.config.Config automatically instantiate a HazelcastInstance
+    @Bean
+    public Config config() {
+        return new Config().addMapConfig(
+                // Set up TTL for the Map tracking received Messages IDs
+                new MapConfig()
+                        .setName(ChatServiceHazelcastImpl.ACCEPTED_MESSAGES_TRACKING_MAP_NAME)
+                        .setEvictionPolicy(EvictionPolicy.LRU)
+                        .setTimeToLiveSeconds(RECEICED_MESSAGES_TRACK_TTL_SECS));
+
+    }
+
+        return new Config().addMapConfig(
+                new MapConfig()
+                    .setName("accepted-messages")
+                    .setEvictionPolicy(EvictionPolicy.LRU)
+                    .setTimeToLiveSeconds(2400))
+                    .setProperty("hazelcast.logging.type","slf4j");
+     */
 }

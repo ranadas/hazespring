@@ -41,7 +41,9 @@ dependencies {
     compile libraries.spBootStarterParent
     compile libraries.hzCast
     compile libraries.restAssured
-
+    compile libraries.dozer
+    compile libraries.dozerSpring
+    compile libraries.festAssertions
 }
 
 task wrapper(type: Wrapper) {

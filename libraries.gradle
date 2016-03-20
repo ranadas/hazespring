@@ -16,6 +16,8 @@ ext {
     springfoxSwagger2Version = "2.0.3"
     springfoxSwaggerUiVersion = "2.0.3"
 
+    dozerVersion            ='5.5.1'
+
     // libraries
     libraries = [
             lombok               : dependencies.create("org.projectlombok:lombok:${lombokVersion}"),
@@ -39,8 +41,11 @@ ext {
             spBootStarterParent  : dependencies.create("org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"),
             junit                : dependencies.create("junit:junit:${junitVersion}"),
             restAssured          : dependencies.create("com.jayway.restassured:rest-assured:${restAssuredVersion}"),
-            festAssertions       : dependencies.create("org.easytesting:fest-assert:${festAssertionsVersion}")
-            
+            festAssertions       : dependencies.create("org.easytesting:fest-assert:${festAssertionsVersion}"),
+
+            dozer                :dependencies.create ("net.sf.dozer:dozer:${dozerVersion}"),
+            dozerSpring          :dependencies.create ("net.sf.dozer:dozer-spring:${dozerVersion}")
+
     ]
 }
 

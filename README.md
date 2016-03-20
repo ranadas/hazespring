@@ -24,11 +24,11 @@ There is no Hazelcast Server. Hazelcast is a library, deployed with (and initial
 
 ## Hazelcast in a Spring Boot Application
 
-... Include the com.hazelcast:hazelcast dependency
-... Initialise a com.hazelcast.config.Config Spring bean  <– I personally consider this option more à la Spring Boot
-... OR
-... Put hazelcast.xml in the classpath root
-... OR
-... Put an Hazelcast XML config file at the location specified by spring.hazelcast.config property
+...Include the com.hazelcast:hazelcast dependency
+...Initialise a com.hazelcast.config.Config Spring bean  <– I personally consider this option more à la Spring Boot
+...OR
+...Put hazelcast.xml in the classpath root
+...OR
+...Put an Hazelcast XML config file at the location specified by spring.hazelcast.config property
 
 

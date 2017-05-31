@@ -2,6 +2,9 @@ package com.rdas.config;
 
 
 import com.hazelcast.config.Config;
+import com.hazelcast.config.EvictionPolicy;
+import com.hazelcast.config.MapConfig;
+import com.rdas.service.ChatServiceHazelcastImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class HazelcastConfiguration {
+    private static final int RECEICED_MESSAGES_TRACK_TTL_SECS = 60 * 60;
 
     /**
      * Spring boot automatically starts a Hazelcast instance when it finds both
@@ -20,7 +24,12 @@ public class HazelcastConfiguration {
      */
     @Bean
     public Config config() {
-        return new Config();
+        return new Config().addMapConfig(
+                // Set up TTL for the Map tracking received Messages IDs
+                new MapConfig()
+                        .setName(ChatServiceHazelcastImpl.ACCEPTED_MESSAGES_TRACKING_MAP_NAME)
+                        .setEvictionPolicy(EvictionPolicy.LRU)
+                        .setTimeToLiveSeconds(RECEICED_MESSAGES_TRACK_TTL_SECS));
     }
 
     /*

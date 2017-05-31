@@ -8,10 +8,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.boot.test.WebIntegrationTest;
-import org.springframework.test.annotation.DirtiesContext;
+//import org.springframework.boot.test.SpringApplicationConfiguration;
+//import org.springframework.boot.test.WebIntegrationTest;
+//import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import static com.jayway.restassured.RestAssured.given;
 import static com.jayway.restassured.RestAssured.when;
@@ -23,10 +25,12 @@ import static org.hamcrest.Matchers.equalTo;
  * <p>
  * https://opencredo.com/spring-booting-hazelcast/
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = ApplicationMain.class)
-@WebIntegrationTest("server.port=0") // Use a random free port
-@DirtiesContext
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@SpringApplicationConfiguration(classes = ApplicationMain.class)
+//@WebIntegrationTest("server.port=0") // Use a random free port
+//@DirtiesContext
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = ApplicationMain.class)
 public class ChatControllerTest {
 
     // THIS IS A BAD TEST:

@@ -1,3 +1,4 @@
+rootProject.name='hazespring'
 // please include each new module in here - it doesn't mean that current app
 // will depend on this module, it just means that gradle will properly recognize it
 //include 'adminwebapp'

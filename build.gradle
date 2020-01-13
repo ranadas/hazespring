@@ -33,10 +33,7 @@ dependencies {
     compile libraries.lombok
     compile libraries.spBootStartrTest
     compile libraries.spBootStartrActuator
-    compile libraries.spBootStarterParent
     compile libraries.hzCast
     compile libraries.restAssured
-    compile libraries.dozer
-    compile libraries.dozerSpring
     compile libraries.festAssertions
 }

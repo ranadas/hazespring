@@ -9,12 +9,9 @@ ext {
 
     guavaVersion            = '28.2-jre'
     groovyVersion           = '2.5.8'
-    jodaTimeVersion         = '2.2'
-    
+
     springfoxSwagger2Version = "2.9.2"
     springfoxSwaggerUiVersion = "2.9.2"
-
-    dozerVersion            ='5.5.1'
 
     // libraries
     libraries = [
@@ -26,19 +23,14 @@ ext {
             
             groovy               : dependencies.create("org.codehaus.groovy:groovy-all:${groovyVersion}"),                    
 
-            jodaTime             : dependencies.create("joda-time:joda-time:${jodaTimeVersion}"),
             springfoxSwagger2    : dependencies.create("io.springfox:springfox-swagger2:${springfoxSwagger2Version}"),
             springfoxSwaggerUi   : dependencies.create("io.springfox:springfox-swagger-ui:${springfoxSwaggerUiVersion}"),
 
             spBootStartrTest     : dependencies.create("org.springframework.boot:spring-boot-starter-test"),
             spBootStartrActuator : dependencies.create("org.springframework.boot:spring-boot-starter-actuator"),
-            spBootStarterParent  : dependencies.create("org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"),
             junit                : dependencies.create("junit:junit:${junitVersion}"),
             restAssured          : dependencies.create("com.jayway.restassured:rest-assured:${restAssuredVersion}"),
             festAssertions       : dependencies.create("org.easytesting:fest-assert:${festAssertionsVersion}"),
-
-            dozer                :dependencies.create ("net.sf.dozer:dozer:${dozerVersion}"),
-            dozerSpring          :dependencies.create ("net.sf.dozer:dozer-spring:${dozerVersion}")
 
     ]
 }

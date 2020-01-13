@@ -1,9 +1,10 @@
-package com.rdas.service;
+package com.rdas.service.impl;
 
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 import com.hazelcast.core.IQueue;
 import com.rdas.model.ChatMessage;
+import com.rdas.service.ChatService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

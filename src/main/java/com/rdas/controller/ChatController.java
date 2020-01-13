@@ -4,10 +4,10 @@ import com.rdas.model.ChatMessage;
 import com.rdas.model.ChatMessageResource;
 import com.rdas.service.ChatService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -30,35 +30,26 @@ import java.util.stream.Collectors;
 @RequestMapping("/messages")
 public class ChatController {
 
-    @Autowired
-    private ChatService chatService;
+    private final ChatService chatService;
 
-    @RequestMapping(method = RequestMethod.POST)
+    public ChatController(ChatService chatService) {
+        this.chatService = chatService;
+    }
+
+    @PostMapping
     public void send(@RequestBody ChatMessageResource messageResource) {
-        // TODO Add validation and error handling
-        chatService.send(map(messageResource));
+        chatService.send(mesgResourceToMesg.apply(messageResource));
     }
 
-    @RequestMapping(value = "/{receiver}", method = RequestMethod.GET)
+    @PostMapping(value = "/{receiver}")
     public List<ChatMessageResource> receive(@PathVariable("receiver") String receiver) {
-        return chatService.receive(receiver).stream().map(ChatController::map).collect(Collectors.toList());
+        return chatService.receive(receiver).stream().map(mesgToMesgResource).collect(Collectors.toList());
     }
 
-    // TODO Use Dozer mapping
-    private static ChatMessage map(ChatMessageResource messageResource) {
-        return new ChatMessage(
-                messageResource.getMessageUid(),
-                messageResource.getSender(),
-                messageResource.getRecipient(),
-                messageResource.getText());
-    }
-    // TODO Use Dozer mapping
-    private static ChatMessageResource map(ChatMessage message) {
-        final ChatMessageResource messageResource = new ChatMessageResource();
-        messageResource.setMessageUid(message.getMessageUid());
-        messageResource.setSender(message.getSender());
-        messageResource.setRecipient(message.getRecipient());
-        messageResource.setText(message.getText());
-        return messageResource;
-    }
+    Function<ChatMessage, ChatMessageResource> mesgToMesgResource = t ->
+            new ChatMessageResource(t.getMessageUid(), t.getRecipient(), t.getSender(), t.getText());
+
+    Function<ChatMessageResource, ChatMessage> mesgResourceToMesg = t ->
+            new ChatMessage(t.getMessageUid(), t.getRecipient(), t.getSender(), t.getText());
+    ;
 }

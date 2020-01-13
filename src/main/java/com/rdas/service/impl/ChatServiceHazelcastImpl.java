@@ -22,13 +22,13 @@ public class ChatServiceHazelcastImpl implements ChatService {
     public static final String ACCEPTED_MESSAGES_TRACKING_MAP_NAME = "received";
     public static final String RECIPIENT_QUEUE_NAME_SUFFIX = "recipient-";
 
-    public ChatServiceHazelcastImpl(HazelcastInstance hazelcastInstance) {
-        this.hazelcastInstance = hazelcastInstance;
+    public ChatServiceHazelcastImpl(HazelcastInstance hazelcast) {
+        this.hazelcastInstance = hazelcast;
     }
 
     @Override
     public void send(ChatMessage message) {
-// Check if the message is duplicate. If duplicate, silently ignore it
+        // Check if the message is duplicate. If duplicate, silently ignore it
         if (!isDuplicate(message)) {
             log.debug("Submitting the message id:{}", message.getMessageUid());
             recipientQueue(message.getRecipient()).offer(message);

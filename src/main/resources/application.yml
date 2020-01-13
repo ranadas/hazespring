@@ -3,5 +3,10 @@ logging:
     ROOT: INFO
 
 server:
-    port: 8080
+  port: 8080
+  servlet:
     context-path: /hazspring
+
+
+hazelcast:
+  port: 21412

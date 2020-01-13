@@ -6,6 +6,7 @@ import com.rdas.service.ChatService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -45,9 +46,9 @@ public class ChatController {
     }
 
     Function<ChatMessage, ChatMessageResource> mesgToMesgResource = t ->
-            new ChatMessageResource(t.getMessageUid(), t.getRecipient(), t.getSender(), t.getText());
+            new ChatMessageResource(t.getRecipient(), t.getSender(), t.getText());
 
-    Function<ChatMessageResource, ChatMessage> mesgResourceToMesg = t ->
-            new ChatMessage(t.getMessageUid(), t.getRecipient(), t.getSender(), t.getText());
-    ;
+    Function<ChatMessageResource, ChatMessage> mesgResourceToMesg = t -> {
+        return new ChatMessage(UUID.randomUUID().toString(), t.getRecipient(), t.getSender(), t.getText());
+    };
 }

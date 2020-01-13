@@ -6,6 +6,9 @@ Thumbs.db
 temp
 tmp
 target/
-.gradle
+.gradle/
 .idea
 *.iml
+gradle/
+gradlew.bat
+gradlew

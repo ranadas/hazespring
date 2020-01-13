@@ -10,7 +10,7 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'idea'
-apply plugin: 'spring-boot'
+apply plugin: 'org.springframework.boot'
 apply from: './libraries.gradle'
 
 jar {
@@ -45,9 +45,3 @@ dependencies {
     compile libraries.dozerSpring
     compile libraries.festAssertions
 }
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
-}
-
-

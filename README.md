@@ -1,9 +1,18 @@
 # hazespring
-Spring + Hazelcast sample
+Spring + Hazelcast 
 
 To run :
-gradle bootRun
 
+```bash
+    java -Dserver.port=8081 -jar target/hazespring-1.0.1.jar
+    mvn spring-boot:run                
+```
+```bash
+curl localhost:8081/hazspring/messages/Jennifer
+
+curl -X POST localhost:8080/hazspring/messages \
+    -d '{"recipient":"Jennifer","sender":"Rana", "text":"Howdy, from rdas"}'
+```
 ##Notes :
 How to embed Hazelcast to Spring Boot and integration testings.
 
@@ -16,15 +25,11 @@ Interesting low-level features:
 * Distributed execution: Executor Services, Entry processing, Distributed Queries…
 * Distributed transactions, potentially participating XA transactions.
 
-There is no Hazelcast Server. Hazelcast is a library, deployed with (and initialised by) Java application.
 
-## Hazelcast in a Spring Boot Application
+### Links 
+*[Trade IMDG Project](https://github.com/dineshgpillai/innovation/tree/cca13cbc4f361f579c6320717d343259513a3e7b/trade-imdg)
 
-...Include the com.hazelcast:hazelcast dependency
-...Initialise a com.hazelcast.config.Config Spring bean  <– I personally consider this option more à la Spring Boot
-...OR
-...Put hazelcast.xml in the classpath root
-...OR
-...Put an Hazelcast XML config file at the location specified by spring.hazelcast.config property
+*[SPRING BOOT + HAZELCAST TUTORIAL OctoPerf](https://octoperf.com/blog/2018/06/12/spring-boot-hazelcast-tutorial/)
+*[Code for above Article](https://github.com/jloisel/spring-boot-hazelcast)
 
-
+*[Github Search for Hazelcast](https://github.com/search?l=Java&q=spring+boot+hazelcast+java+config&type=Code)

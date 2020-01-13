@@ -1,0 +1,19 @@
+FROM maven:3-jdk-11
+
+RUN mkdir -p /usr/src/app
+
+WORKDIR /usr/src/app
+
+
+# Prepare by downloading dependencies
+ADD pom.xml /usr/src/app
+RUN ["mvn", "dependency:resolve"]
+RUN ["mvn", "verify"]
+
+# Adding source, compile and package into a fat jar
+ADD src /usr/src/app/src
+RUN ["mvn", "package"]
+
+
+EXPOSE 8092
+CMD ["java", "-jar", "target/hazespring-1.0.1.jar"]

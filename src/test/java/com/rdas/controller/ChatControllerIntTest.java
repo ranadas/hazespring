@@ -1,6 +1,5 @@
 package com.rdas.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rdas.model.ChatMessageResource;
 import org.junit.jupiter.api.Test;
@@ -35,7 +34,6 @@ class ChatControllerIntTest {
         )
                 .andDo(print())
                 .andExpect(status().isOk())
-        //.andExpect(content().json("{\"id\":1,\"title\":\"delectus aut autem\",\"userId\":1,\"completed\":false}"))
         ;
     }
 
@@ -51,7 +49,7 @@ class ChatControllerIntTest {
     private ChatMessageResource getMessageResource() {
         int leftLimit = 97; // letter 'a'
         int rightLimit = 122; // letter 'z'
-        int targetStringLength = 10;
+        int targetStringLength = 20;
         Random random = new Random();
 
         String generatedString = random.ints(leftLimit, rightLimit + 1)

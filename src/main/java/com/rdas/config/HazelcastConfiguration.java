@@ -44,6 +44,15 @@ public class HazelcastConfiguration {
         return networkConfig;
     }
 
+    //TODO - https://github.com/jloisel/spring-boot-hazelcast/tree/master/cluster-hazelcast/src/main/java/com/octoperf/cluster/hazelcast
+    //https://github.com/jloisel/spring-boot-hazelcast
+
+
+    //https://github.com/dineshgpillai/innovation/tree/cca13cbc4f361f579c6320717d343259513a3e7b/trade-imdg/src/main/java/com/trade/imdg/hazelcast
+    //https://github.com/dineshgpillai/innovation/blob/cca13cbc4f361f579c6320717d343259513a3e7b/trade-imdg/src/main/java/com/trade/imdg/hazelcast/MainNoSpringBoot.java
+
+
+
 //    @Bean
 //    JoinConfig joinConfig(TcpIpConfig tcpIpConfig) {
 //        final JoinConfig joinConfig = disabledMulticast();

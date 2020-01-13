@@ -40,7 +40,7 @@ public class ChatController {
         chatService.send(mesgResourceToMesg.apply(messageResource));
     }
 
-    @PostMapping(value = "/{receiver}")
+    @GetMapping(value = "/{receiver}")
     public List<ChatMessageResource> receive(@PathVariable("receiver") String receiver) {
         return chatService.receive(receiver).stream().map(mesgToMesgResource).collect(Collectors.toList());
     }

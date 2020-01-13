@@ -4,10 +4,6 @@ Spring + Hazelcast sample
 To run :
 gradle bootRun
 
-# Dozer
-Unrelated to hazelcast, Dozer Object mapping is integrated for com.rdas.model classes.
-Look at SimpleDozerSpringTest  to understand the mapping.
-
 ##Notes :
 How to embed Hazelcast to Spring Boot and integration testings.
 

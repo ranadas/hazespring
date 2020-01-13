@@ -1,19 +1,26 @@
 package com.rdas.controller;
 
-
-import com.jayway.restassured.RestAssured;
-import com.jayway.restassured.http.ContentType;
 import com.rdas.ApplicationMain;
+import com.rdas.config.HazelcastConfiguration;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import static com.jayway.restassured.RestAssured.given;
-import static com.jayway.restassured.RestAssured.when;
+import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.when;
 import static org.hamcrest.Matchers.equalTo;
+
+
+//import com.jayway.restassured.RestAssured;
+//import com.jayway.restassured.http.ContentType;
+//import static com.jayway.restassured.RestAssured.given;
+//import static com.jayway.restassured.RestAssured.when;
 
 /**
  * https://github.com/nicusX/springboot-hazelcast-example/blob/master/src/test/java/com/opencredo/examples/hzchat/api/ChatControllerTest.java
@@ -25,8 +32,10 @@ import static org.hamcrest.Matchers.equalTo;
 //@SpringApplicationConfiguration(classes = ApplicationMain.class)
 //@WebIntegrationTest("server.port=0") // Use a random free port
 //@DirtiesContext
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = ApplicationMain.class)
+//@Import({HazelcastConfiguration.class})
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
+@Ignore
 public class ChatControllerTest {
 
     // THIS IS A BAD TEST:

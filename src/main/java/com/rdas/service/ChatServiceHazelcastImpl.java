@@ -5,7 +5,6 @@ import com.hazelcast.core.IMap;
 import com.hazelcast.core.IQueue;
 import com.rdas.model.ChatMessage;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -19,11 +18,14 @@ import java.util.List;
 @Service
 public class ChatServiceHazelcastImpl implements ChatService {
 
-    @Autowired
-    private HazelcastInstance hazelcastInstance;
+    private final HazelcastInstance hazelcastInstance;
 
     public static final String ACCEPTED_MESSAGES_TRACKING_MAP_NAME = "received";
     public static final String RECIPIENT_QUEUE_NAME_SUFFIX = "recipient-";
+
+    public ChatServiceHazelcastImpl(HazelcastInstance hazelcastInstance) {
+        this.hazelcastInstance = hazelcastInstance;
+    }
 
     @Override
     public void send(ChatMessage message) {

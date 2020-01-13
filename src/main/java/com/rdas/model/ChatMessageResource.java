@@ -1,15 +1,11 @@
 package com.rdas.model;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 /**
  * Created by rdas on 18/03/2016.
  */
-@Getter
-@Setter
-@ToString
+@Data
 public class ChatMessageResource {
     private String messageUid;
     private String recipient;

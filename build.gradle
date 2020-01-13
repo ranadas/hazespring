@@ -1,25 +1,20 @@
-buildscript {
 
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-    }
+plugins {
+    id 'org.springframework.boot' version '2.2.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+    id 'idea'
+    id 'io.freefair.lombok' version '3.8.4'
 }
 
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
+
 apply from: './libraries.gradle'
 
 jar {
     group = 'com.rdas'
     description = 'bootstraping-spring-boot'
-    //baseName = 'gs-spring-boot'
-    
-    // Version should be <MAJOR>.<MINOR>
-    version = implementationVersion    
+
+    version = implementationVersion
 }
 
 repositories {
@@ -33,7 +28,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
     }
-    compile("org.springframework.boot:spring-boot-starter-jetty")
+    compile("org.springframework.boot:spring-boot-starter-undertow")
     
     compile libraries.lombok
     compile libraries.spBootStartrTest

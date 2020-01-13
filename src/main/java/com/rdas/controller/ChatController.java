@@ -36,8 +36,8 @@ public class ChatController {
     }
 
     @PostMapping
-    public void send(@RequestBody ChatMessageResource messageResource) {
-        chatService.send(mesgResourceToMesg.apply(messageResource));
+    public String send(@RequestBody ChatMessageResource messageResource) {
+        return chatService.send(mesgResourceToMesg.apply(messageResource));
     }
 
     @GetMapping(value = "/{receiver}")
@@ -48,7 +48,6 @@ public class ChatController {
     Function<ChatMessage, ChatMessageResource> mesgToMesgResource = t ->
             new ChatMessageResource(t.getRecipient(), t.getSender(), t.getText());
 
-    Function<ChatMessageResource, ChatMessage> mesgResourceToMesg = t -> {
-        return new ChatMessage(UUID.randomUUID().toString(), t.getRecipient(), t.getSender(), t.getText());
-    };
+    Function<ChatMessageResource, ChatMessage> mesgResourceToMesg = t ->
+            new ChatMessage(UUID.randomUUID().toString(), t.getRecipient(), t.getSender(), t.getText());
 }

@@ -3,6 +3,7 @@ package com.rdas.service.impl;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 import com.hazelcast.core.IQueue;
+import com.hazelcast.monitor.LocalQueueStats;
 import com.rdas.model.ChatMessage;
 import com.rdas.service.ChatService;
 import lombok.extern.log4j.Log4j2;
@@ -27,30 +28,35 @@ public class ChatServiceHazelcastImpl implements ChatService {
     }
 
     @Override
-    public void send(ChatMessage message) {
+    public String send(ChatMessage message) {
         // Check if the message is duplicate. If duplicate, silently ignore it
         if (!isDuplicate(message)) {
-            log.debug("Submitting the message id:{}", message.getMessageUid());
+            log.debug("\n--> Submitting the message id:{}", message.getMessageUid());
             recipientQueue(message.getRecipient()).offer(message);
 
             // Save UID as accepted
             markAsAccepted(message);
         }
+        return message.getMessageUid();
     }
 
     @Override
     public List<ChatMessage> receive(String recipient) {
-        log.debug("Polling message for recipient: {}", recipient);
+        log.debug("\n--> Polling message for recipient: {}", recipient);
 
         // Poll recipient's queue until empty
         final List<ChatMessage> messages = new ArrayList();
         while ( true ) {
+            LocalQueueStats localQueueStats = recipientQueue(recipient).getLocalQueueStats();
+            log.info("count{}  and tString  {} ",localQueueStats.getOwnedItemCount(), localQueueStats.toString() );
+
             final ChatMessage message = recipientQueue(recipient).poll();
+
             if ( message == null ) break;
-            log.debug("Polled message id:{}", message.getMessageUid());
+            log.debug("\n--> Polled message id:{}", message.getMessageUid());
             messages.add(message);
         }
-        log.debug("Returning {} messages", messages.size());
+        log.debug("\n--> Returning {} messages", messages.size());
 
         // This is not a transactional receiver: If something happens here, the messages are lost...
 
@@ -75,7 +81,6 @@ public class ChatServiceHazelcastImpl implements ChatService {
     private IQueue<ChatMessage> recipientQueue(String user) {
         return hazelcastInstance.getQueue(RECIPIENT_QUEUE_NAME_SUFFIX + user);
     }
-
 
     private IMap<Object, Object> acceptedMessageUidMap() {
         return hazelcastInstance.getMap(ACCEPTED_MESSAGES_TRACKING_MAP_NAME);

@@ -1,6 +1,9 @@
 logging:
   level:
     ROOT: INFO
+    org.springframework.web: ERROR
+    com.rdas: DEBUG
+    org.hibernate: ERROR
 
 server:
   port: 8080

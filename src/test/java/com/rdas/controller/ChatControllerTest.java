@@ -4,10 +4,9 @@ import com.rdas.ApplicationMain;
 import com.rdas.config.HazelcastConfiguration;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
@@ -35,7 +34,7 @@ import static org.hamcrest.Matchers.equalTo;
 //@Import({HazelcastConfiguration.class})
 //@RunWith(SpringRunner.class)
 //@SpringBootTest
-@Ignore
+@Disabled
 public class ChatControllerTest {
 
     // THIS IS A BAD TEST:
@@ -51,7 +50,7 @@ public class ChatControllerTest {
     @Value("${local.server.port}")
     private int port;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         RestAssured.port = port;
     }

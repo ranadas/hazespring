@@ -3,7 +3,6 @@ package com.rdas.controller;
 import com.rdas.model.ChatMessage;
 import com.rdas.model.ChatMessageResource;
 import com.rdas.service.ChatService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,7 +24,6 @@ import java.util.stream.Collectors;
  * <p>
  * The recipient polling is not transactional: If any error occurs during the operation, messages are lost.
  */
-@Slf4j
 @RestController
 @RequestMapping("/messages")
 public class ChatController {

@@ -5,6 +5,7 @@ import com.hazelcast.core.IMap;
 import com.hazelcast.core.IQueue;
 import com.rdas.model.ChatMessage;
 import com.rdas.service.ChatService;
+import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +13,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by rdas on 18/03/2016.
- */
-@Slf4j
+@Log4j2
 @Service
 public class ChatServiceHazelcastImpl implements ChatService {
 
